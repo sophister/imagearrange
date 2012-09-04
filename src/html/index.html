@@ -12,6 +12,8 @@
 				width:800px;
 				height:430px;
 				border:1px solid red;
+				position:relative;
+				margin:0 auto;
 			}
 			
 		</style>
@@ -27,5 +29,12 @@
 		<script type="text/javascript" src="../js/utils.js"></script>
 		<script type="text/javascript" src="../js/data.js"></script>
 		<script type="text/javascript" src="../js/arrange.js"></script>
+		<script type="text/javascript">
+			var w = 800, h = 430;
+			JJ.Data.addDataChangeListener(function(index){
+				JJ.Arrange.setData(index).setDimension(w, h).start();
+			});
+			JJ.Data.init();
+		</script>
 	</body>
 </html>

@@ -3,6 +3,7 @@
 JJ.Data = function(){
 	
 	var index = [];
+	var dataChangeListeners = [];
 	
 	//返回[start, end]区间包含的JSON数据
 	function getData(start, end){
@@ -17,19 +18,33 @@ JJ.Data = function(){
 	//JSONP返回数据时的回调函数
 	function dataBack(data){
 		var arr = data.data, i, len;
-		for(i = 0, len = arr.length; i < len; i++){
+		for(i = 0, len = arr.length - 1; i < len; i++){
 			index[i] = arr[i];
 			index[i].originWidth = arr[i].width;
 			index[i].originHeight = arr[i].height;
 			delete index[i].width;
 			delete index[i].height;
 		}
+		//
+		for(i = 0, len = dataChangeListeners.length; i < len; i++){
+			var temp = dataChangeListeners[i];
+			temp.fun.call(temp.context ? temp.context : null, index);
+		}
+	}
+	
+	//增加数据变化的监听器
+	function addDataChangeListener(callBack, context){
+		dataChangeListeners.push({
+			'fun' : callBack, 
+			'context' : context
+		});
 	}
 	
 	return {
 		getData : getData, 
 		index : index, 
 		init : init, 
-		dataBack : dataBack
+		dataBack : dataBack, 
+		addDataChangeListener : addDataChangeListener
 	};
 }();
