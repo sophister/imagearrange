@@ -17,13 +17,20 @@ JJ.Data = function(){
 	
 	//JSONP返回数据时的回调函数
 	function dataBack(data){
-		var arr = data.data, i, len;
+		var arr = data.data, i, len, tempW, tempH;
 		for(i = 0, len = arr.length - 1; i < len; i++){
 			index[i] = arr[i];
-			index[i].originWidth = arr[i].width;
-			index[i].originHeight = arr[i].height;
+			tempW = index[i].originWidth = arr[i].width;
+			tempH = index[i].originHeight = arr[i].height;
 			delete index[i].width;
 			delete index[i].height;
+			if(tempW >= tempH){
+				index[i].thumbWidth = 170;
+				index[i].thumbHeight = 170 * tempH / tempW;
+			}else{
+				index[i].thumbHeight = 170;
+				index[i].thumbWidth = 170 * tempW / tempH;
+			}
 		}
 		//
 		for(i = 0, len = dataChangeListeners.length; i < len; i++){
