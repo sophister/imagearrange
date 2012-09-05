@@ -71,7 +71,7 @@ JJ.Arrange = function(){
 for(i = 0, len = lists.length; i < len; i++){
 	console.log(lists[i].fit);
 }		
-//		JJ.View.display(data, 0, lists.length);
+		JJ.View.display(data, 0, lists.length);
 		
 		return;
 

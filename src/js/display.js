@@ -10,6 +10,9 @@ JJ.View = function(){
 		for(i = 0; i < len; i++){
 			temp = data[i];
 			fit = temp.fit;
+			if(!fit){
+				break;
+			}
 			temp.left = fit.x;
 			temp.top = fit.y;
 			temp.boxWidth = temp.thumbWidth - 2;
