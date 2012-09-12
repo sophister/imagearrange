@@ -39,6 +39,9 @@ JJ.Arrange = function(){
 			temp.w = temp.thumbWidth;
 			temp.h = temp.thumbHeight;
 			temp.area = temp.thumbWidth * temp.thumbHeight;
+			if(currArea + temp.area >= CON_SQUARE){
+				break;
+			}
 			if(temp.originWidth > temp.originHeight * 1.15){
 				//ºáÍ¼
 				pushHorizontalImage(temp);
@@ -58,15 +61,15 @@ JJ.Arrange = function(){
 			}
 			currArea += temp.area;
 			imageNum++;
-			if(currArea >= CON_SQUARE){
-				break;
-			}
+			
 		}
 		
 		
 /******************************use packer.growing.js*********************************************/
 		var packer = new Packer(800, 430);
+//var packer = new GrowingPacker(800, 430);
 		packer.fit(lists);
+
 //		console.log(lists[0], lists[1]);
 for(i = 0, len = lists.length; i < len; i++){
 	console.log(lists[i].fit);

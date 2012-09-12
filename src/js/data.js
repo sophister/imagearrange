@@ -24,6 +24,7 @@ JJ.Data = function(){
 			tempH = index[i].originHeight = arr[i].height;
 			delete index[i].width;
 			delete index[i].height;
+/*
 			if(tempW >= tempH){
 				index[i].thumbWidth = 170;
 				index[i].thumbHeight = 170 * tempH / tempW;
@@ -31,6 +32,7 @@ JJ.Data = function(){
 				index[i].thumbHeight = 170;
 				index[i].thumbWidth = 170 * tempW / tempH;
 			}
+*/
 		}
 		//
 		for(i = 0, len = dataChangeListeners.length; i < len; i++){

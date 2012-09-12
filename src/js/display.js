@@ -11,7 +11,7 @@ JJ.View = function(){
 			temp = data[i];
 			fit = temp.fit;
 			if(!fit){
-				break;
+				continue;
 			}
 			temp.left = fit.x;
 			temp.top = fit.y;
